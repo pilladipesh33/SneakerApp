@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {Input} from '../components/TextInput';
-import {Button, SpinButton} from '../components/Button';
+import {Button} from '../components/Button';
 import {useDispatch, useSelector} from 'react-redux';
 import {handleSignin} from '../redux/action/AuthAction';
 import AntDesign from 'react-native-vector-icons/AntDesign';

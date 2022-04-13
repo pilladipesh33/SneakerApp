@@ -14,7 +14,7 @@ export const AuthNav = () => {
         useNativeDriver: true,
         headerShown: false,
       }}
-      initialRouteName={'Signup'}
+      initialRouteName={'Welcome'}
       detachInactiveScreens={false}>
       <Stack.Screen name="Welcome" component={WelcomeScreen} />
       <Stack.Screen name="Login" component={Login} />

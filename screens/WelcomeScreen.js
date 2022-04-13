@@ -1,15 +1,16 @@
 import {
-  SafeAreaView,
   Text,
   View,
   StyleSheet,
   Image,
-  Button,
   TouchableOpacity,
+  LogBox
 } from 'react-native';
 import React from 'react';
 
 const WelcomeScreen = ({navigation}) => {
+
+  //LogBox.ignoreLogs('Seems like youre using an old API with gesture components, check out new Gestures system!')
   return (
       <View style={styles.container}>
         <View style={styles.rectStack}>

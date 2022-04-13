@@ -1,12 +1,19 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useSelector} from 'react-redux';
-import {StyleSheet} from 'react-native'
+import {StyleSheet, View, Animated, Dimensions} from 'react-native';
 import Profile from '../screens/Profile';
 import Dashboard from '../screens/Dashboard';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+
 
 const Tab = createMaterialBottomTabNavigator();
+
+function getWidth() {
+  let width = Dimensions.get('window').width;
+  width = width - 40;
+  return width / 4;
+}
 
 const MainTab = () => {
   const theme = useSelector(state => state.theme);
@@ -16,7 +23,12 @@ const MainTab = () => {
     setMode(theme.mode);
   }, [theme]);
 
+  //Animated Tab indicator
+  const tabOffsetValue = useRef(new Animated.Value(0)).current;
+
+
   return (
+    <View style={{flex: 1}}>
     <Tab.Navigator
       initialRouteName="Dashboard"
       activeColor={mode=='light' ? 'black' : 'white'}
@@ -28,7 +40,7 @@ const MainTab = () => {
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: () => (
-            <MaterialCommunityIcons name="home" color={'#B9345A'} size={26} />
+            <AntDesign name="home" color={'#B9345A'} size={26} />
           ),
         }}
       />
@@ -38,8 +50,8 @@ const MainTab = () => {
         options={{
           tabBarLabel: 'Profile',
           tabBarIcon: () => (
-            <MaterialCommunityIcons
-              name="face-man-profile"
+            <AntDesign
+              name="user"
               color={'#B9345A'}
               size={26}
             />
@@ -47,9 +59,11 @@ const MainTab = () => {
         }}
       />
     </Tab.Navigator>
+    <View style={styles.indicator}>
+      </View>
+    </View>
   );
 };
-
 export default MainTab;
 
 const styles = StyleSheet.create({
@@ -58,5 +72,14 @@ const styles = StyleSheet.create({
   },
   bgColor_dark: {
     backgroundColor: '#121212',
+  },
+  indicator: {
+    height: 2,
+    width: getWidth() - 10,
+    backgroundColor: 'red',
+    position: 'absolute',
+    bottom: 54,
+    left: 70,
+    borderRadius: 10
   }
 })

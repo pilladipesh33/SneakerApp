@@ -7,14 +7,19 @@ import {
   FlatList,
   TouchableOpacity,
   Dimensions,
+  Platform,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import firestore from '@react-native-firebase/firestore';
+import Carousel from 'react-native-snap-carousel';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
-const {width} = Dimensions.get('screen');
-const ITEM_WIDTH = width * 0.7;
-const ITEM_HEIGHT = ITEM_WIDTH * 1.54;
+const {width: screenWidth} = Dimensions.get('screen');
+// const ITEM_WIDTH = width * 0.7;
+// const ITEM_HEIGHT = ITEM_WIDTH * 1.54;
+// const SPACING = 10;
 
 const Dashboard = ({navigation}) => {
   const theme = useSelector(state => state.theme);
@@ -44,35 +49,48 @@ const Dashboard = ({navigation}) => {
 
   const renderItem = ({item, index}) => {
     return (
-      <View style={styles.imageCar}>
-        <TouchableOpacity onPress={() => navigation.navigate('Details', {key: item})}>
-          <Image source={{uri: item.image}} style={styles.photo} />
+      <View>
+        <View style={styles.item}>
+          <Image
+            source={{uri: item.image}}
+            containerStyle={styles.imageContainer}
+            style={styles.images}
+          />
+        </View>
+        <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('Details', {key: item})}>
+          <View style={styles.rect}>
+            <Text style={styles.buttonText}>{item.Title}</Text>
+          </View>
         </TouchableOpacity>
-        <Text style={styles.heading}>{item.Title}</Text>
       </View>
     );
   };
 
   return (
-    <View style={mode == 'light' ? styles.screen_light : styles.screen_dark}>
-      <View style={[StyleSheet.absoluteFillObject]}>
-        {/* {Data.map((item, index) => {
-          return <Image key={`image${index}`} source={{uri: JSON.stringify(item.image)}} style={[StyleSheet.absoluteFillObject]}/>;
-        })} */}
-        <Image
-          source={require('../assets/image/bg.jpg')}
-          style={styles.bgImage}
-          blurRadius={30}
+    <View style={styles.screen}>
+      <View style={styles.heading}>
+        <View style={styles.icons_1}>
+          <MaterialCommunityIcons name="dots-grid" color={'black'} size={20} />
+          <View>
+            <AntDesign
+              name="search1"
+              color={'black'}
+              size={20}
+            />
+          </View>
+        </View>
+        <Text style={styles.headingText}>Sneaker Store</Text>
+      </View>
+      <View>
+        <Carousel
+          sliderWidth={screenWidth}
+          sliderHeight={screenWidth}
+          itemWidth={screenWidth - 100}
+          data={Data}
+          renderItem={renderItem}
+          hasParallaxImages={true}
         />
       </View>
-
-      <FlatList
-        data={Data}
-        keyExtractor={item => item.id.toString()}
-        horizontal
-        pagingEnabled
-        renderItem={renderItem}
-      />
     </View>
   );
 };
@@ -80,35 +98,57 @@ const Dashboard = ({navigation}) => {
 export default Dashboard;
 
 const styles = StyleSheet.create({
+  screen: {
+    ...StyleSheet.absoluteFill,
+    backgroundColor: 'white',
+  },
   image: {
     position: 'absolute',
   },
-  screen_light: {
+  item: {
+    width: screenWidth - 60,
+    height: screenWidth + 60,
+    marginTop: '15%',
+  },
+  imageContainer: {
+    flex: 1,
+    marginBottom: Platform.select({ios: 0, android: 1}), // Prevent a random Android rendering issue
     backgroundColor: 'white',
-    flex: 1,
+    borderRadius: 8,
   },
-  screen_dark: {
-    backgroundColor: '#121212',
-    flex: 1,
-  },
-  imageCar: {
-    width: width,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  photo: {
-    height: ITEM_HEIGHT,
-    width: ITEM_WIDTH,
+  images: {
+    ...StyleSheet.absoluteFillObject,
     resizeMode: 'cover',
-    borderRadius: 16,
-  },
-  bgImage: {
-    width: ITEM_WIDTH * 1.9,
+    borderRadius: 25,
+    width: '90%',
   },
   heading: {
-    fontSize: 30,
-    fontWeight: '700',
-    marginTop: 25,
-    color: 'white',
+    marginLeft: '5%',
+    marginTop: '10%',
+    marginRight: '5%',
   },
+  headingText: {
+    fontSize: 40,
+    fontWeight: '700',
+    fontStyle: 'italic',
+    color: '#B9345A',
+    padding: '4%',
+  },
+  icons_1: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  rect: {
+    width: screenWidth - 276,
+    backgroundColor: '#292d3e',
+    borderBottomLeftRadius: 30,
+    borderTopRightRadius: 30,
+    borderBottomRightRadius: 30,
+    marginLeft: 50,
+    marginTop: -30,
+    padding: '5%'
+  },
+  buttonText: {
+    color: 'white',
+  }
 });
