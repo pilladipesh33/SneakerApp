@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "96756890255",
+    "project_id": "demopro-cd978",
+    "storage_bucket": "demopro-cd978.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:96756890255:android:185007bc57142a85cd0efa",
+        "android_client_info": {
+          "package_name": "com.sneakerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "96756890255-s8pr6522a2a9rj25oavsrfmr94c6ds8g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFC1lcNg48cK4_0jOnPSyY5hwfRlt3N4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "96756890255-s8pr6522a2a9rj25oavsrfmr94c6ds8g.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "96756890255-3g9n26v53nemekei7o1m8jv28hmtuaao.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.SneakerApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
