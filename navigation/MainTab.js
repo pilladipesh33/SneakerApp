@@ -30,7 +30,7 @@ const MainTab = () => {
   return (
     <View style={{flex: 1}}>
     <Tab.Navigator
-      initialRouteName="Dashboard"
+      initialRouteName="Profile"
       activeColor={mode=='light' ? 'black' : 'white'}
       barStyle={mode=='light' ? styles.bgColor_light : styles.bgColor_dark}
       >

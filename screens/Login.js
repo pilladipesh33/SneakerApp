@@ -5,9 +5,8 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   StyleSheet,
-  Image,
 } from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {Input} from '../components/TextInput';
 import {Button} from '../components/Button';
 import {useDispatch, useSelector} from 'react-redux';
@@ -17,13 +16,11 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const userid = useSelector(state => state?.auth?.user);
   const dispatch = useDispatch();
   const [enableshift, setEnableshift] = useState(false);
 
   function onSubmit() {
-    try{
-
+    try {
       dispatch(handleSignin(email, password));
     }
     catch {

@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Dimensions,
   Platform,
+  ActivityIndicator
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
@@ -26,6 +27,7 @@ const Dashboard = ({navigation}) => {
   const [mode, setMode] = useState(theme.mode);
   const [lastDoc, setlastDoc] = useState(null);
   const [Data, setData] = useState([]);
+  const [loader,  setLoader] =  useState(true);
 
   const GetData = async () => {
     const db = firestore().collection('SneakerDatabase');
@@ -42,9 +44,20 @@ const Dashboard = ({navigation}) => {
     }
   };
 
+  function sendData(item) {
+    var title = "hello";
+    var description  = 'Description';
+    item.Title = title;
+    item.Description = description;
+    navigation.navigate('Details', {key: item});
+  }
+
   useEffect(() => {
-    setMode(theme.mode);
-    GetData();
+    setTimeout(() => {
+      setMode(theme.mode);
+      GetData();
+      setLoader(false);
+    }, 3000)
   }, [theme]);
 
   const renderItem = ({item, index}) => {
@@ -57,40 +70,47 @@ const Dashboard = ({navigation}) => {
             style={styles.images}
           />
         </View>
-        <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('Details', {key: item})}>
+        <TouchableOpacity style={styles.container} onPress={() => sendData(item)}>
           <View style={styles.rect}>
             <Text style={styles.buttonText}>{item.Title}</Text>
           </View>
         </TouchableOpacity>
+        <View style={styles.circleAlgn}>
+          <View style={styles.circle}>
+            <AntDesign name='heart' color={'white'} size={25} style={styles.heart}/>
+          </View>
+        </View>
       </View>
     );
   };
 
   return (
     <View style={styles.screen}>
-      <View style={styles.heading}>
-        <View style={styles.icons_1}>
-          <MaterialCommunityIcons name="dots-grid" color={'black'} size={20} />
-          <View>
-            <AntDesign
-              name="search1"
-              color={'black'}
-              size={20}
-            />
-          </View>
-        </View>
-        <Text style={styles.headingText}>Sneaker Store</Text>
-      </View>
-      <View>
-        <Carousel
-          sliderWidth={screenWidth}
-          sliderHeight={screenWidth}
-          itemWidth={screenWidth - 100}
-          data={Data}
-          renderItem={renderItem}
-          hasParallaxImages={true}
-        />
-      </View>
+    {
+        loader ?
+        <ActivityIndicator size={'large'} color = {'blue'} />
+        :
+      <><View style={styles.heading}>
+            <View style={styles.icons_1}>
+              <MaterialCommunityIcons name="dots-grid" color={'black'} size={20} />
+              <View>
+                <AntDesign
+                  name="search1"
+                  color={'black'}
+                  size={20} />
+              </View>
+            </View>
+            <Text style={styles.headingText}>Sneaker Store</Text>
+          </View><View>
+              <Carousel
+                sliderWidth={screenWidth}
+                sliderHeight={screenWidth}
+                itemWidth={screenWidth - 100}
+                data={Data}
+                renderItem={renderItem}
+                hasParallaxImages={true} />
+            </View></>
+      }
     </View>
   );
 };
@@ -144,11 +164,26 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 30,
     borderTopRightRadius: 30,
     borderBottomRightRadius: 30,
-    marginLeft: 50,
+    marginLeft: 30,
     marginTop: -30,
     padding: '5%'
   },
   buttonText: {
     color: 'white',
-  }
+  },
+  circle: {
+    height: 50,
+    width: 50,
+    borderRadius: 50 / 2,
+    backgroundColor: '#B9345A',
+  },
+  circleAlgn: {
+    justifyContent:'center',
+    alignItems: 'center',
+    marginTop: -50,
+    marginLeft: '25%',
+  },
+  heart: {
+    padding: 12,
+  },
 });
