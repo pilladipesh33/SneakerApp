@@ -5,6 +5,7 @@ import {StyleSheet, View, Animated, Dimensions} from 'react-native';
 import Profile from '../screens/Profile';
 import Dashboard from '../screens/Dashboard';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import EditProfile from '../components/EditProfile';
 
 
 const Tab = createMaterialBottomTabNavigator();
