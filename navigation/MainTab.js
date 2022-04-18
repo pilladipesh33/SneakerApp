@@ -5,7 +5,6 @@ import {StyleSheet, View, Animated, Dimensions} from 'react-native';
 import Profile from '../screens/Profile';
 import Dashboard from '../screens/Dashboard';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import language from '../screens/language';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -29,7 +28,7 @@ const MainTab = () => {
   return (
     <View style={{flex: 1}}>
       <Tab.Navigator
-        initialRouteName="language"
+        initialRouteName="Dashboard"
         activeColor={mode == 'light' ? 'black' : 'white'}
         barStyle={mode == 'light' ? styles.bgColor_light : styles.bgColor_dark}>
         <Tab.Screen
@@ -45,16 +44,6 @@ const MainTab = () => {
         <Tab.Screen
           name="Profile"
           component={Profile}
-          options={{
-            tabBarLabel: 'Profile',
-            tabBarIcon: () => (
-              <AntDesign name="user" color={'#B9345A'} size={26} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="language"
-          component={language}
           options={{
             tabBarLabel: 'Profile',
             tabBarIcon: () => (

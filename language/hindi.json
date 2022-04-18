@@ -6,6 +6,10 @@
         "setting": "सेटिंग",
         "profile": "प्रोफ़ाइल",
         "logout": "लॉग आउट",
-        "user_management": "उपयोगकर्ता प्रबंधन"
+        "user_management": "उपयोगकर्ता प्रबंधन",
+        "choose_language": "आगे किस भाषा को चुनना है चुनें",
+        "billing_details": "बिलिंग विवरण",
+        "information": "जानकारी"
+        
     }
 }

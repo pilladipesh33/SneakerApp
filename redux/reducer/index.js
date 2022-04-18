@@ -3,13 +3,13 @@ import { LOGOUT_SUCCESS } from '../action/Constant';
 import authReducer from './AuthReducer';
 import ProfileReducer from './ProfileReducer';
 import UserReducer from './UserReducer';
-
+import LanguageReducer from './LanguageReducer';
 
 
 const appReducer = combineReducers({
   auth: authReducer,
   theme: UserReducer,
-  lang: UserReducer,
+  lang: LanguageReducer,
   profile: ProfileReducer,
 });
 

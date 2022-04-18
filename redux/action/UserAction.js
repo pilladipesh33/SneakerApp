@@ -1,4 +1,4 @@
-import { THEME_CHANGE, LANGUAGE_CHANGE } from './Constant';
+import { THEME_CHANGE } from './Constant';
 
 export const switchMode = (mode) => {
     return {
@@ -6,11 +6,3 @@ export const switchMode = (mode) => {
         payload: mode,
     };
 };
-
-export const switchLanguage = (lang) => {
-    return {
-        type: LANGUAGE_CHANGE,
-        payload: lang,
-    };
-};
-

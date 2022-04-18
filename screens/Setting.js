@@ -9,10 +9,13 @@ import React, {useState, useEffect} from 'react';
 import Theme from '../components/Theme';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useSelector} from 'react-redux';
+import Language from '../components/Language';
+import { useTranslation } from 'react-i18next';
 
 const Setting = ({navigation}) => {
   const theme = useSelector(state => state.theme);
   const [mode, setMode] = useState(theme.mode);
+  const {t} = useTranslation();
 
   useEffect(() => {
     setMode(theme.mode);
@@ -27,8 +30,9 @@ const Setting = ({navigation}) => {
           style={mode == 'light' ? styles.arrow_light : styles.arrow_dark}
         />
       </TouchableOpacity>
-      <Text style={styles.headingText}>Settings</Text>
+      <Text style={styles.headingText}>{t('setting')}</Text>
       <Theme />
+      <Language />
     </SafeAreaView>
   );
 };

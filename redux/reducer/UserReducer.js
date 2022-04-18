@@ -1,8 +1,7 @@
-import {LANGUAGE_CHANGE, THEME_CHANGE} from '../action/Constant';
+import { THEME_CHANGE} from '../action/Constant';
 
 const initialState = {
   mode: 'light',
-  lang: 'eng',
 };
 
 const UserReducer = (state = initialState, action) => {
@@ -11,11 +10,6 @@ const UserReducer = (state = initialState, action) => {
       return {
         ...state,
         mode: action.payload,
-      };
-    case LANGUAGE_CHANGE:
-      return {
-        ...state,
-        lang: action.payload,
       };
     default:
       return state;

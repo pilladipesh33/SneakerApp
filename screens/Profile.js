@@ -7,8 +7,7 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
-import React, {useEffect, useRef, useState} from 'react';
-import * as Animatable from 'react-native-animatable';
+import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {handleSignOut} from '../redux/action/AuthAction';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -22,6 +21,8 @@ const {height: screenHeight} = screenWidth * 1.42;
 const Profile = ({navigation}) => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const {t} = useTranslation();
 
   const uid = useSelector(state => state?.auth?.accessToken);
   const dispatch = useDispatch();
@@ -51,7 +52,7 @@ const Profile = ({navigation}) => {
   return (
     <SafeAreaView style={styles.screen_light}>
       <View style={styles.heading}>
-        <Text style={styles.headingText}>Profile</Text>
+        <Text style={styles.headingText}>{t('profile')}</Text>
         <AntDesign
           name="setting"
           size={30}
@@ -84,21 +85,21 @@ const Profile = ({navigation}) => {
             <View style={styles.icons}>
               <AntDesign name="creditcard" size={25} color={'black'} />
             </View>
-            <Text style={styles.bottomText}>Billing Details</Text>
+            <Text style={styles.bottomText}>{t('billing_details')}</Text>
             <MaterialCommunityIcons name="forward" size={30} color={'black'} />
           </View>
           <View style={styles.textIcon}>
             <View style={styles.icons}>
               <AntDesign name="user" size={25} color={'black'} />
             </View>
-            <Text style={styles.bottomText}>User Management</Text>
+            <Text style={styles.bottomText}>{t('user_management')}</Text>
             <MaterialCommunityIcons name="forward" size={30} color={'black'} />
           </View>
           <View style={styles.textIcon}>
             <View style={styles.icons}>
               <AntDesign name="infocirlce" size={25} color={'black'} />
             </View>
-            <Text style={styles.bottomText}>Information</Text>
+            <Text style={styles.bottomText}>{t('information')}</Text>
             <MaterialCommunityIcons name="forward" size={30} color={'black'} />
           </View>
           <View style={styles.textIcon}>
@@ -111,7 +112,7 @@ const Profile = ({navigation}) => {
               />
             </View>
             <Text style={styles.bottomText} onPress={() => Logout()}>
-              Log out
+            {t('logout')}
             </Text>
             <MaterialCommunityIcons
               name="forward"
