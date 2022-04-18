@@ -14,6 +14,7 @@ import {handleSignOut} from '../redux/action/AuthAction';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import firestore from '@react-native-firebase/firestore';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import { useTranslation } from 'react-i18next';
 
 const {width: screenWidth} = Dimensions.get('screen');
 const {height: screenHeight} = screenWidth * 1.42;

@@ -1,0 +1,11 @@
+{
+    "translation": {
+        "camera": "Camera",
+        "gallery": "Gallery",
+        "email": "Email",
+        "setting": "Setting",
+        "profile": "Profile",
+        "logout": "Logout",
+        "user_management": "User Management"
+    }
+}

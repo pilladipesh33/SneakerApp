@@ -2,6 +2,7 @@ import {LANGUAGE_CHANGE, THEME_CHANGE} from '../action/Constant';
 
 const initialState = {
   mode: 'light',
+  lang: 'eng',
 };
 
 const UserReducer = (state = initialState, action) => {
