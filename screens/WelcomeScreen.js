@@ -4,42 +4,39 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
-  LogBox
+  LogBox,
 } from 'react-native';
 import React from 'react';
 
 const WelcomeScreen = ({navigation}) => {
-
   //LogBox.ignoreLogs('Seems like youre using an old API with gesture components, check out new Gestures system!')
   return (
-      <View style={styles.container}>
-        <View style={styles.rectStack}>
-          <TouchableOpacity
-            style={styles.rect}
-            onPress={() => navigation.navigate('Login')}>
-            <Text style={styles.signin}>Signin</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.rect2}
-            onPress={() => navigation.navigate('Signup')}>
-            <Text style={styles.register}>Register</Text>
-          </TouchableOpacity>
-        </View>
-        <Image
+    <View style={styles.container}>
+      <View style={styles.rectStack}>
+        <TouchableOpacity
+          style={styles.rect}
+          onPress={() => navigation.navigate('Login')}>
+          <Text style={styles.signin}>Signin</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.rect2}
+          onPress={() => navigation.navigate('Signup')}>
+          <Text style={styles.register}>Register</Text>
+        </TouchableOpacity>
+      </View>
+      <Image
         source={require('../assets/image/ui.png')}
         resizeMode="contain"
         style={styles.image}
-       />
-       <View style={styles.headingView}>
-       <Text style={styles.heading}>Enterprise team</Text>
+      />
+      <View style={styles.headingView}>
+        <Text style={styles.heading}>Enterprise team</Text>
         <Text style={styles.heading}>collaboration.</Text>
-        <Text style={styles.text}>
-          Bring together your files, your tools, {'\n'} projects and people.
-          Including a new{'\n'} mobile and desktop application.
-        </Text>
-
-       </View>
+        <Text style={styles.text}>Bring together your files, your tools,</Text>
+        <Text style={styles.text}>projects and people. Including a new</Text>
+        <Text style={styles.text}>mobile and desktop application.</Text>
       </View>
+    </View>
   );
 };
 

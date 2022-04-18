@@ -46,7 +46,7 @@ const Login = ({navigation}) => {
             changeText={setEmail}
             onFocus={() => setEnableshift(true)}
             newStyles={styles.textInput}
-            placeholderTextColor={'black'}
+            placeholderTextColor={'grey'}
           />
           </View>
           <View style={{padding: "5%"}}>
@@ -57,7 +57,7 @@ const Login = ({navigation}) => {
             changeText={setPassword}
             onFocus={() => setEnableshift(true)}
             newStyles={styles.textInput}
-            placeholderTextColor={'black'}
+            placeholderTextColor={'grey'}
           />
           <View style={styles.bottom}>
         <TouchableOpacity style={styles.bottomText} onPress={() => navigation.navigate('ForgotPassword')}>
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   },
   page: {
     flex: 1,
-    backgroundColor: 'rgba(18,16,26,1)',
+    backgroundColor: '#18171f',
     paddingLeft: '2%',
   },
   backIcon: {
@@ -125,9 +125,10 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   textInput: {
-    backgroundColor: '#84848c',
+    backgroundColor: '#1d1c23',
     borderRadius: 15,
     padding: '5%',
+    color: 'white',
   },
   button: {
     flexDirection: 'column',

@@ -98,7 +98,7 @@ const Signup = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgba(18,16,26,1)',
+    backgroundColor: '#18171f',
   },
   screen: {
     justifyContent: 'center',
@@ -136,6 +136,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1d1c23',
     borderRadius: 15,
     padding: '5%',
+    color: 'white',
   },
   button: {
     flexDirection: 'column',

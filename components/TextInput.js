@@ -23,7 +23,7 @@ const Input = (
       maxLength,
       onFocus,
       underlineColorAndroid,
-      placeholderTextColor
+      placeholderTextColor,
     }) => {
   const {textInput, errorStyle} = InputFieldStyles;
   return (
