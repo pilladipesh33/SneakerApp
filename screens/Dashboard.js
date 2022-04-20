@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   Dimensions,
   Platform,
-  ActivityIndicator
+  ActivityIndicator,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
@@ -27,7 +27,7 @@ const Dashboard = ({navigation}) => {
   const [mode, setMode] = useState(theme.mode);
   const [lastDoc, setlastDoc] = useState(null);
   const [Data, setData] = useState([]);
-  const [loader,  setLoader] =  useState(true);
+  const [loader, setLoader] = useState(true);
 
   const GetData = async () => {
     const db = firestore().collection('SneakerDatabase');
@@ -45,8 +45,8 @@ const Dashboard = ({navigation}) => {
   };
 
   function sendData(item) {
-    var title = "hello";
-    var description  = 'Description';
+    var title = item.Title;
+    var description = item.detail;
     item.Title = title;
     item.Description = description;
     navigation.navigate('Details', {key: item});
@@ -57,7 +57,7 @@ const Dashboard = ({navigation}) => {
       setMode(theme.mode);
       GetData();
       setLoader(false);
-    }, 3000)
+    }, 3000);
   }, [theme]);
 
   const renderItem = ({item, index}) => {
@@ -70,14 +70,21 @@ const Dashboard = ({navigation}) => {
             style={styles.images}
           />
         </View>
-        <TouchableOpacity style={styles.container} onPress={() => sendData(item)}>
+        <TouchableOpacity
+          style={styles.container}
+          onPress={() => sendData(item)}>
           <View style={styles.rect}>
             <Text style={styles.buttonText}>{item.Title}</Text>
           </View>
         </TouchableOpacity>
         <View style={styles.circleAlgn}>
           <View style={styles.circle}>
-            <AntDesign name='heart' color={'white'} size={25} style={styles.heart}/>
+            <AntDesign
+              name="heart"
+              color={'white'}
+              size={25}
+              style={styles.heart}
+            />
           </View>
         </View>
       </View>
@@ -86,31 +93,25 @@ const Dashboard = ({navigation}) => {
 
   return (
     <View style={styles.screen}>
-    {
-        loader ?
-        <ActivityIndicator size={'large'} color = {'blue'} />
-        :
-      <><View style={styles.heading}>
-            <View style={styles.icons_1}>
-              <MaterialCommunityIcons name="dots-grid" color={'black'} size={20} />
-              <View>
-                <AntDesign
-                  name="search1"
-                  color={'black'}
-                  size={20} />
-              </View>
-            </View>
-            <Text style={styles.headingText}>Sneaker Store</Text>
-          </View><View>
-              <Carousel
-                sliderWidth={screenWidth}
-                sliderHeight={screenWidth}
-                itemWidth={screenWidth - 100}
-                data={Data}
-                renderItem={renderItem}
-                hasParallaxImages={true} />
-            </View></>
-      }
+      <View style={styles.heading}>
+        <View style={styles.icons_1}>
+          <MaterialCommunityIcons name="dots-grid" color={'black'} size={20} />
+          <View>
+            <AntDesign name="search1" color={'black'} size={20} />
+          </View>
+        </View>
+        <Text style={styles.headingText}>Sneaker Store</Text>
+      </View>
+      <View>
+        <Carousel
+          sliderWidth={screenWidth}
+          sliderHeight={screenWidth}
+          itemWidth={screenWidth - 100}
+          data={Data}
+          renderItem={renderItem}
+          hasParallaxImages={true}
+        />
+      </View>
     </View>
   );
 };
@@ -148,11 +149,12 @@ const styles = StyleSheet.create({
     marginRight: '5%',
   },
   headingText: {
-    fontSize: 40,
-    fontWeight: '700',
-    fontStyle: 'italic',
-    color: '#B9345A',
-    padding: '4%',
+    // fontSize: 40,
+    // fontFamily: 'Updock-Regular',
+    // color: '#B9345A',
+    // padding: '4%',
+    fontSize: 30,
+    fontFamily: 'RobotoMono',
   },
   icons_1: {
     flexDirection: 'row',
@@ -166,7 +168,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 30,
     marginLeft: 30,
     marginTop: -30,
-    padding: '5%'
+    padding: '5%',
   },
   buttonText: {
     color: 'white',
@@ -178,7 +180,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#B9345A',
   },
   circleAlgn: {
-    justifyContent:'center',
+    justifyContent: 'center',
     alignItems: 'center',
     marginTop: -50,
     marginLeft: '25%',

@@ -11,6 +11,8 @@ import {useSelector} from 'react-redux';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Rating from '../components/Rating';
 import {Button} from '../components/Button';
+import { Input } from '../components/TextInput';
+import { UploadData } from '../api/ItemService';
 
 const {width} = Dimensions.get('screen');
 const ITEM_WIDTH = width * 1;
@@ -20,6 +22,7 @@ const Details = ({navigation, route}) => {
   const theme = useSelector(state => state.theme);
   const [mode, setMode] = useState(theme.mode);
   const [postData, setpostData] = useState(route?.params?.key);
+  const [editDetail, seteditDetail] = useState(postData);
 
   useEffect(() => {
     setMode(theme.mode);
@@ -41,7 +44,13 @@ const Details = ({navigation, route}) => {
       <View style={styles.bottom}>
         <View style={styles.bottomHeading}>
           <Text style={styles.headingText}>{postData.Title}</Text>
-          <Text style={styles.bodyText}>{postData.Description}</Text>
+          <Input
+          value={ editDetail ? editDetail.detail : ''}
+          changeText={txt => seteditDetail({...editDetail, detail: txt})}
+          placeholder={'Description'}
+          placeholderTextColor={'black'}
+          multiline
+        />
         </View>
         <View style={styles.button}>
           <Button

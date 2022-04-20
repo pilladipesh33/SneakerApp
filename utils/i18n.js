@@ -1,17 +1,36 @@
 import i18next from 'i18next';
 import {initReactI18next} from 'react-i18next';
-import eng from '../language/english.json';
-import hin from '../language/hindi.json';
-import {getLocales} from 'react-native-localize';
+import en from '../language/english.json';
+import hi from '../language/hindi.json';
+import * as RNLocalize from 'react-native-localize';
+
+const languageDetector = {
+  type: 'languageDetector',
+  async: true,
+  detect: callback => {
+    return callback(RNLocalize.getLocales()[0].languageCode);
+  },
+  init: () => {},
+  cacheUserLanguage: () => {},
+};
+
+export const setLocale = locale => {
+    RNLocalize.getLocales()[0].languageCode = locale;
+};
+
+export const getCurrentLocale = RNLocalize.getLocales()[0].languageCode;
+
+
+
 
 i18next
+  .use(languageDetector)
   .use(initReactI18next)
   .init({
-    lng: getLocales()[0].languageCode,          //set inital language
-    fallbackLng: 'eng',
+    fallbackLng: 'en',
     resources: {
-      eng: eng,
-      hin: hin,
+      en: en,
+      hi: hi,
     },
     react: {
       useSuspense: false,

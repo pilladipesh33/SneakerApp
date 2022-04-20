@@ -32,3 +32,15 @@ export const UploadImage = ({image}) => {
     alert(error.message);
   }
 };
+
+export const UploadData = ({detail}) =>{
+  const uid = useSelector(state => state?.auth?.accessToken);
+  try {
+    firestore().collection('users').doc(uid).update({
+      detail: detail,
+    });
+  } catch (error) {
+    alert(error.message);
+  }
+};
+

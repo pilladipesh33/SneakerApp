@@ -9,6 +9,11 @@
         "user_management": "User Management",
         "choose_language": "Choose which language to use further",
         "billing_details": "Billing Details",
-        "information": "Information"
+        "information": "Information",
+        "new_balance": "New Balance",
+        "converse": "Converse",
+        "adidas": "Adidas",
+        "balanciaga": "Balanciaga",
+        "nike_jordan": "Nike Jordan"
     }
 }

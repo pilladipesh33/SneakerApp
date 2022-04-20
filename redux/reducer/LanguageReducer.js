@@ -1,7 +1,8 @@
 import {LANGUAGE_CHANGE} from '../action/Constant';
+import { getCurrentLocale } from '../../utils/i18n';
 
 const initialState = {
-  lang: 'eng',
+  lang: getCurrentLocale,
 };
 
 const LanguageReducer = (state = initialState, action) => {
