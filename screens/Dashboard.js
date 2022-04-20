@@ -4,11 +4,11 @@ import {
   Text,
   Image,
   StyleSheet,
-  FlatList,
   TouchableOpacity,
   Dimensions,
   Platform,
   ActivityIndicator,
+  LogBox,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
@@ -27,7 +27,6 @@ const Dashboard = ({navigation}) => {
   const [mode, setMode] = useState(theme.mode);
   const [lastDoc, setlastDoc] = useState(null);
   const [Data, setData] = useState([]);
-  const [loader, setLoader] = useState(true);
 
   const GetData = async () => {
     const db = firestore().collection('SneakerDatabase');
@@ -53,11 +52,9 @@ const Dashboard = ({navigation}) => {
   }
 
   useEffect(() => {
-    setTimeout(() => {
       setMode(theme.mode);
       GetData();
-      setLoader(false);
-    }, 3000);
+      LogBox.ignoreAllLogs();
   }, [theme]);
 
   const renderItem = ({item, index}) => {
@@ -149,12 +146,9 @@ const styles = StyleSheet.create({
     marginRight: '5%',
   },
   headingText: {
-    // fontSize: 40,
-    // fontFamily: 'Updock-Regular',
-    // color: '#B9345A',
-    // padding: '4%',
-    fontSize: 30,
-    fontFamily: 'RobotoMono',
+    fontSize: 40,
+    color: '#B9345A',
+    padding: '4%',
   },
   icons_1: {
     flexDirection: 'row',

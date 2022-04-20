@@ -5,7 +5,6 @@ import {
   SafeAreaView,
   Image,
   TouchableOpacity,
-  Dimensions,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
@@ -15,8 +14,6 @@ import firestore from '@react-native-firebase/firestore';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { useTranslation } from 'react-i18next';
 
-const {width: screenWidth} = Dimensions.get('screen');
-const {height: screenHeight} = screenWidth * 1.42;
 
 const Profile = ({navigation}) => {
   const [userData, setUserData] = useState(null);
