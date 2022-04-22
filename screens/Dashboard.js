@@ -146,9 +146,10 @@ const styles = StyleSheet.create({
     marginRight: '5%',
   },
   headingText: {
-    fontSize: 40,
+    fontSize: 60,
     color: '#B9345A',
     padding: '4%',
+    fontFamily: 'Updock-Regular',
   },
   icons_1: {
     flexDirection: 'row',

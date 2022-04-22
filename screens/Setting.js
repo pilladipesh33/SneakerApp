@@ -19,7 +19,7 @@ const Setting = ({navigation}) => {
 
   useEffect(() => {
     setMode(theme.mode);
-  }, [theme]);
+    }, [theme]);
 
   return (
     <SafeAreaView style={mode=='light' ? styles.screen_light: styles.screen_dark}>
@@ -61,5 +61,8 @@ const styles = StyleSheet.create({
   screen_dark:{
     flex: 1,
     backgroundColor: '#121212',
+  },
+  button: {
+    marginBottom: 20,
   }
 });

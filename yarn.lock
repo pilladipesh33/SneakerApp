@@ -1319,6 +1319,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-14.7.0.tgz#d79f6c6f4aa96111d8f20f7643bfcfca2dc17fc0"
   integrity sha512-vYmXJYs3VI3Ur4N9BFdls+kwFaQ0+hG5JQe/QA1L/o3UP0ho+oqZ5wyCnpA4uXyQwTgeWUukoedbI+iK0AHpWg==
 
+"@react-native-firebase/remote-config@^14.8.0":
+  version "14.8.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/remote-config/-/remote-config-14.8.0.tgz#b5d655ffaec8ab7ba8eb4a84358ff6dfad2d6999"
+  integrity sha512-YGagH6myd50zM5HAGAwgPVY3HxWBnP02wAdnXXzNlccp4hSWLfiDbD8OtNuSY0xFCNKDhHm5bKP2tERWCrHp8Q==
+
 "@react-native-firebase/storage@^14.7.0":
   version "14.7.0"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/storage/-/storage-14.7.0.tgz#4d16cd1c8bac4cf4f9931ae0657c55a0ab42adba"

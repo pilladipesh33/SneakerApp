@@ -1,13 +1,17 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
+import i18next from 'i18next';
 import { Button } from './Button';
-import * as RNLocalize from 'react-native-localize';
-import {storage} from '../storage';
+import { useSelector } from 'react-redux';
+import { getCurrentLocale } from '../utils/i18n';
 
-const Language = props => {
+const Language = () => {
   const {t, i18n} = useTranslation();
   const [currentLanguage, setcurrentLanguage] = useState('en');
+
+  const localise = useSelector(state => state.localise);
+  console.log('lANG', getCurrentLocale);
 
   const changeLanguage = () => {
     i18n
@@ -17,8 +21,6 @@ const Language = props => {
       })
       .catch(error => console.log(error));
   };
-
-  console.log('lang', currentLanguage);
 
   return (
     <View style={styles.screen}>

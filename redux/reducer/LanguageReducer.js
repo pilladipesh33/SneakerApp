@@ -1,8 +1,9 @@
-import {LANGUAGE_CHANGE} from '../action/Constant';
-import { getCurrentLocale } from '../../utils/i18n';
+import i18next from 'i18next';
+import { LANGUAGE_CHANGE } from '../action/Constant';
+
 
 const initialState = {
-  lang: getCurrentLocale,
+  lang: i18next.language,
 };
 
 const LanguageReducer = (state = initialState, action) => {

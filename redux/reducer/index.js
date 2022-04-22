@@ -9,7 +9,7 @@ import LanguageReducer from './LanguageReducer';
 const appReducer = combineReducers({
   auth: authReducer,
   theme: UserReducer,
-  lang: LanguageReducer,
+ localise: LanguageReducer,
   profile: ProfileReducer,
 });
 

@@ -3,6 +3,7 @@ import {initReactI18next} from 'react-i18next';
 import en from '../language/english.json';
 import hi from '../language/hindi.json';
 import * as RNLocalize from 'react-native-localize';
+import { changeLanguage } from '../api/RemoteConfig';
 
 const languageDetector = {
   type: 'languageDetector',
@@ -15,11 +16,10 @@ const languageDetector = {
 };
 
 export const setLocale = locale => {
-    RNLocalize.getLocales()[0].languageCode = locale;
+   i18next.language = locale;
 };
 
-export const getCurrentLocale = RNLocalize.getLocales()[0].languageCode;
-
+export const getCurrentLocale = i18next.language;
 
 
 
@@ -31,9 +31,6 @@ i18next
     resources: {
       en: en,
       hi: hi,
-    },
-    react: {
-      useSuspense: false,
     },
   });
 

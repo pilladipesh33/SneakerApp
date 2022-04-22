@@ -7,20 +7,22 @@ import { Button } from './Button';
 const Theme = () => {
     const theme = useSelector(state => state.theme);
     const dispatch = useDispatch();
-    const [mode, setMode] = useState(theme.mode);
+    const [ismode, setMode] = useState(theme.mode);
 
     const handleThemeChange = () =>{
         dispatch(switchMode(theme.mode === 'light' ? 'dark' : 'light'));
     };
+
+    console.log('mode', ismode);
 
     useEffect(() => {
         setMode(theme.mode);
     }, [theme]);
 
     return (
-        <View style={mode == 'light' ? styles.container_light : styles.container_dark}>
+        <View style={ismode == 'light' ? styles.container_light : styles.container_dark}>
             <View style={styles.screen}>
-            <Text style={mode == 'light' ? styles.text_light : styles.text_dark}>Switch from {theme.mode} mode!</Text>
+            <Text style={ismode == 'light' ? styles.text_light : styles.text_dark}>Switch from {theme.mode} mode!</Text>
             <Button
             title={theme.mode + ' Mode'}
             buttonStyle={{

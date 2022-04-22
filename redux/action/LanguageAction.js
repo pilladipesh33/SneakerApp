@@ -1,9 +1,7 @@
-import { LANGUAGE_CHANGE } from './Constant';
+import {LANGUAGE_CHANGE} from './Constant';
 
+export const handleLang = lang => ({
+    type: LANGUAGE_CHANGE,
+    payload: lang,
+});
 
-export const switchLanguage = (lang) => {
-    return {
-        type: LANGUAGE_CHANGE,
-        payload: lang,
-    };
-};
