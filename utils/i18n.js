@@ -3,7 +3,7 @@ import {initReactI18next} from 'react-i18next';
 import en from '../language/english.json';
 import hi from '../language/hindi.json';
 import * as RNLocalize from 'react-native-localize';
-import { changeLanguage } from '../api/RemoteConfig';
+import { changeLanguage } from '../api/RemoteConfigService';
 
 const languageDetector = {
   type: 'languageDetector',
