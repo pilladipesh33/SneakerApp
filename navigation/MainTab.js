@@ -5,6 +5,7 @@ import {StyleSheet, View, Animated, Dimensions} from 'react-native';
 import Profile from '../screens/Profile';
 import Dashboard from '../screens/Dashboard';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import AddToCart from '../screens/AddToCart';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -23,7 +24,6 @@ const MainTab = () => {
   }, [theme]);
 
   //Animated Tab indicator
-  const tabOffsetValue = useRef(new Animated.Value(0)).current;
 
   return (
     <View style={{flex: 1}}>
@@ -42,6 +42,16 @@ const MainTab = () => {
           }}
         />
         <Tab.Screen
+          name="AddCart"
+          component={AddToCart}
+          options={{
+            tabBarLabel: 'Basket',
+            tabBarIcon: () => (
+              <AntDesign name="shoppingcart" color={'#B9345A'} size={26} />
+            ),
+          }}
+        />
+        <Tab.Screen
           name="Profile"
           component={Profile}
           options={{
@@ -52,7 +62,6 @@ const MainTab = () => {
           }}
         />
       </Tab.Navigator>
-      <View style={styles.indicator}></View>
     </View>
   );
 };
@@ -64,14 +73,5 @@ const styles = StyleSheet.create({
   },
   bgColor_dark: {
     backgroundColor: '#121212',
-  },
-  indicator: {
-    height: 2,
-    width: getWidth() - 10,
-    backgroundColor: 'red',
-    position: 'absolute',
-    bottom: 54,
-    left: 70,
-    borderRadius: 10,
   },
 });

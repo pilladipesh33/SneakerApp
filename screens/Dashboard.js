@@ -52,9 +52,9 @@ const Dashboard = ({navigation}) => {
   }
 
   useEffect(() => {
-      setMode(theme.mode);
-      GetData();
-      LogBox.ignoreAllLogs();
+    setMode(theme.mode);
+    GetData();
+    LogBox.ignoreAllLogs();
   }, [theme]);
 
   const renderItem = ({item, index}) => {
@@ -92,9 +92,37 @@ const Dashboard = ({navigation}) => {
     <View style={styles.screen}>
       <View style={styles.heading}>
         <View style={styles.icons_1}>
-          <MaterialCommunityIcons name="dots-grid" color={'black'} size={20} />
-          <View>
-            <AntDesign name="search1" color={'black'} size={20} />
+          <MaterialCommunityIcons name="dots-grid" color={'black'} size={25} />
+          <View style={styles.iconAlign}>
+            <AntDesign
+              name="search1"
+              color={'black'}
+              size={25}
+              style={{marginRight: 20}}
+            />
+            <View style={{padding: 5}}>
+              <View
+                style={{
+                  position: 'absolute',
+                  height: 30,
+                  width: 30,
+                  borderRadius: 15,
+                  backgroundColor: '#B9345A',
+                  opacity: .8,
+                  right: 15,
+                  bottom: 15,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  zIndex: 2000,
+                }}>
+                <Text style={{color: 'white', fontWeight: 'bold'}}>0</Text>
+                </View>
+                <MaterialCommunityIcons
+                  name="cart-outline"
+                  color={'black'}
+                  size={25}
+                />
+            </View>
           </View>
         </View>
         <Text style={styles.headingText}>Sneaker Store</Text>
@@ -182,5 +210,9 @@ const styles = StyleSheet.create({
   },
   heart: {
     padding: 12,
+  },
+  iconAlign: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
 });
